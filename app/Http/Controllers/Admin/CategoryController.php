@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 use function Pest\Laravel\session;
 
-class CategoryController extends Controller
+class CategoryController extends Controller 
 {
     /**
      * Display a listing of the resource.

@@ -1,12 +1,14 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Fortify\Features;
 use Livewire\Volt\Volt;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
@@ -30,3 +32,22 @@ Route::middleware(['auth'])->group(function () {
         )
         ->name('two-factor.show');
 });
+
+Route::get('/test/{post}', function (Post $post) {
+
+    return Storage::download($post->image_path);
+})->name('test');
+// $path = 'articles/possimus-cumque-ea-sint-non_copy.png';
+// $targetPath = 'posts/possimus-cumque-ea-sint-non_copy.png';
+
+// Storage::move($path, $targetPath);
+
+// return 'File copied successfully from ' . $path . ' to ' . $targetPath;
+
+
+Route::get('/env-check', function () {
+    dd(config('cloudinary'));
+});
+
+
+Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');

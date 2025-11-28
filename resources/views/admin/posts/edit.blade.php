@@ -17,24 +17,31 @@
 
 
 
-    <form method="POST" action="{{ route('admin.posts.update', $post) }}">
+    <form method="POST" action="{{ route('admin.posts.update', $post) }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="relative mb-2">
             <img id="imgPreview" class="w-10/12 mx-auto aspect-video object-cover object-center"
-                src="https://t3.ftcdn.net/jpg/10/22/24/80/360_F_1022248039_7LDxHRi3Mlt9BK3wzLBUGZp9XAO1gt2s.jpg"
-                alt="">
+                src="{{ $post->image }}"
+                alt="Post Image Preview" />
+
+
             <div class="absolute top-12 right-15">
                 <label class="bg-slate-500 text-white px-4 py-2 rounded-sm cursor-pointer">
                     Cambiar Imagen
                     <input onchange="preview_image(event,'#imgPreview')" type="file" name="image" class="hidden"
-                        accept="image" />
+                        accept="image/*" />
                 </label>
+                <a href="{{ route('test', $post) }}">Descargar</a>
             </div>
         </div>
         <div class="space-y-4 bg-white px-6 rounded-lg shadow-lg py-6">
             <flux:input name="title" label="Título" value="{{ old('title', $post->title) }}" />
-            <flux:input id="slug" name="slug" label="Slug" value="{{ old('slug', $post->slug) }}" />
+
+            @if (!$post->is_published)
+                <flux:input id="slug" name="slug" label="Slug" value="{{ old('slug', $post->slug) }}" />
+            @endif
+
             <flux:select wire:model="category" placeholder="Seleccionar categoría" label="Categoría" name="category_id">
 
                 @foreach ($categories as $category)

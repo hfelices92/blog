@@ -10,6 +10,8 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "cloudinary/cloudinary_php": "^3.1",
+        "intervention/image-laravel": "^1.5",
         "laravel-lang/common": "^6.7",
         "laravel/fortify": "^1.30",
         "laravel/framework": "^12.0",

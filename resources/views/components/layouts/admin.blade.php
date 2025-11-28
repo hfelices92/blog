@@ -168,7 +168,7 @@
         </script>
     @endif
     @if ($errors->any())
-    @endif
+    
     <script>
         Swal.fire({
            
@@ -186,6 +186,7 @@
             </ul>`,
         });
     </script>
+    @endif
     @stack('js')
 </body>
 
