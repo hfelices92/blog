@@ -41,9 +41,14 @@
                     :current="request()->routeIs('admin.dashboard')" wire:navigate>{{ __('Dashboard') }}
                 </flux:navlist.item>
                 <flux:navlist.item icon="tag" :href="route('admin.categories.index')"
-                    :current="request()->routeIs('admin.categories.*')" wire:navigate>{{__('Categories')}}</flux:navlist.item>
+                    :current="request()->routeIs('admin.categories.*')" wire:navigate>{{ __('Categories') }}
+                </flux:navlist.item>
                 <flux:navlist.item icon="clipboard-document-list" :href="route('admin.posts.index')"
-                    :current="request()->routeIs('admin.posts.*')" wire:navigate> {{__('Posts')}} </flux:navlist.item>
+                    :current="request()->routeIs('admin.posts.*')" wire:navigate> {{ __('Posts') }}
+                </flux:navlist.item>
+                <flux:navlist.item icon="key" :href="route('admin.permissions.index')"
+                    :current="request()->routeIs('admin.permissions.*')" wire:navigate> {{ __('Permissions') }}
+                </flux:navlist.item>
             </flux:navlist.group>
         </flux:navlist>
 
@@ -168,24 +173,23 @@
         </script>
     @endif
     @if ($errors->any())
-    
-    <script>
-        Swal.fire({
-           
-            position: 'top',
-            showConfirmButton: false,
-           
-            icon: 'error',
-            title: '¡Ups!',
-            text: 'Por favor, revisa los errores en el formulario.',
-            html: `
+        <script>
+            Swal.fire({
+
+                position: 'top',
+                showConfirmButton: false,
+
+                icon: 'error',
+                title: '¡Ups!',
+                text: 'Por favor, revisa los errores en el formulario.',
+                html: `
             <ul class="text-start mt-2  list-inside text-lg">
                 @foreach ($errors->all() as $error) 
                     <li>• {{ $error }}</li>
                 @endforeach
             </ul>`,
-        });
-    </script>
+            });
+        </script>
     @endif
     @stack('js')
 </body>

@@ -327,5 +327,8 @@
     "Your email address is unverified.": "Su dirección de correo electrónico no está verificada.",
     "Categories": "Categorías",
     "Posts": "Publicaciones",
-    "Related articles": "Artículos relacionados"
+    "Related articles": "Artículos relacionados",
+    "Permissions": "Permisos",
+    "Create Permission": "Crear Permiso",
+    "Edit Permission": "Editar Permiso"
 }

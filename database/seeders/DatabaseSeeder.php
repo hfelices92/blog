@@ -27,9 +27,12 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
             'password' => bcrypt('12341234'),
             'two_factor_secret' => null,
+            
         ]);
 
         Category::factory()->count(10)->create();
         Post::factory(50)->create();
+
+        $this->call(PermissionSeeder::class);
     }
 }
