@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
 
         Storage::deleteDirectory('posts');
         Storage::makeDirectory('posts');
-        // User::factory(10)->create();
+        User::factory(10)->create();
 
         User::factory()->create([
             'name' => 'Test User',
@@ -34,5 +34,6 @@ class DatabaseSeeder extends Seeder
         Post::factory(50)->create();
 
         $this->call(PermissionSeeder::class);
+        $this->call(RoleSeeder::class);
     }
 }

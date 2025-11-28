@@ -330,5 +330,8 @@
     "Related articles": "Artículos relacionados",
     "Permissions": "Permisos",
     "Create Permission": "Crear Permiso",
-    "Edit Permission": "Editar Permiso"
+    "Edit Permission": "Editar Permiso",
+    "Roles": "Roles",
+    "Create Role": "Crear Rol",
+    "Edit Role": "Editar Rol"
 }
